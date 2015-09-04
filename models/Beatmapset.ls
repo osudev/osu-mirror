@@ -1,5 +1,15 @@
 require! mongoose
+{Schema} = mongoose
 
-module.exports = mongoose.model 'Beatmapset',
-  beatmapset_id: Number
-  beatmaps: String
+BeatmapSet = mongoose.model 'Beatmap_Set', {
+  beatmapset_id:
+    type: Number
+    index: true
+    unique: true
+  beatmaps: [
+    type: Schema.Types.ObjectId
+    ref: 'Beatmap'
+  ]
+}
+
+module.exports = BeatmapSet
